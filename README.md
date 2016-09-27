@@ -17,7 +17,7 @@ Alternatively, you can clone this repository and install this gem by hand.
 ```bash
 git clone https://github.com/thomascharbonnel/ruby_fds
 gem build fds.gemspec
-gem install fds-*
+gem install ./fds-*
 ```
 
 ## Is This Really Needed?
