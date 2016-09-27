@@ -22,7 +22,7 @@ gem install ./fds-*
 
 ## Is This Really Needed?
 
-On a few elements, you won't even see the difference, standard libs may very well
-be faster. But, on a few millions, there you'll begin to see the difference.
+On a few elements, you won't even notice any difference, standard libs may very well
+be faster. But, on a few millions, there you'll see. :triumph:
 
 Just a small gist, [here](https://gist.github.com/thomascharbonnel/f023ca137f2b2b7021cbe2d580485cd4).
