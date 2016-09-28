@@ -26,9 +26,11 @@ class FDS::UnorderedSet
   end
 
   [:to_s, :first, :last, :to_a].each do |function|
-    define_method function do
-      @data.keys.send(function)
-    end
+    class_eval(<<-EOF, __FILE__, __LINE__ + 1)
+      def #{function}
+        @data.keys.#{function}
+      end
+    EOF
   end
 
   alias_method :<<, :add
