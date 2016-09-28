@@ -4,6 +4,9 @@ Some default Ruby data structures are slow, I intend on putting some time to
 improve their performance without sacrificing too many features. I'm still young
 and full of hope!
 
+master: [![Build Status](https://travis-ci.org/thomascharbonnel/ruby_fds.svg?branch=master)](https://travis-ci.org/thomascharbonnel/ruby_fds)
+develop: [![Build Status](https://travis-ci.org/thomascharbonnel/ruby_fds.svg?branch=develop)](https://travis-ci.org/thomascharbonnel/ruby_fds)
+
 ## Installation
 
 FDS is available in the RubyGems repository.
