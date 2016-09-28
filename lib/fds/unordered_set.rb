@@ -7,10 +7,23 @@ class FDS::UnorderedSet
     end
   end
 
-  def add(e); @data[e]; self; end
-  def find_index(e); @data[e] if @data.has_key?(e); end
-  def remove(e); @data.delete(e); self; end
-  def size; @data.size; end
+  def add(e)
+    @data[e]
+    self
+  end
+
+  def find_index(e)
+    @data[e] if @data.has_key?(e)
+  end
+
+  def remove(e)
+    @data.delete(e)
+    self
+  end
+
+  def size
+    @data.size
+  end
 
   [:to_s, :first, :last, :to_a].each do |function|
     define_method function do
