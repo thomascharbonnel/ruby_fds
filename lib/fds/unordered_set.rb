@@ -3,7 +3,7 @@ class FDS::UnorderedSet
     @data = Hash.new { |h, e| h[e] = h.size }
   end
 
-  def add(e); @data[e]; end
+  def add(e); @data[e]; self; end
   def find_index(e); @data[e] if @data.has_key?(e); end
   def remove(e); @data[e] = nil; end
   def size; @data.size; end
