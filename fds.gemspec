@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'fds'
-  s.version     = '0.0.1'
-  s.date        = '2016-09-27'
+  s.version     = '0.0.2'
+  s.date        = '2016-09-28'
   s.summary     = 'Fast Data Structures'
   s.description = 'Providing fast data structures for everyday Ruby'
   s.authors     = ['Thomas Charbonnel']
