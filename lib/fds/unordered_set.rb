@@ -8,7 +8,7 @@ class FDS::UnorderedSet
   def remove(e); @data[e] = nil; end
   def size; @data.size; end
 
-  [:to_s, :first, :last].each do |function|
+  [:to_s, :first, :last, :to_a].each do |function|
     define_method function do
       @data.keys.send(function)
     end
