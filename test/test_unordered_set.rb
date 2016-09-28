@@ -1,7 +1,6 @@
 require 'minitest/autorun'
 require 'set'
 require 'fds'
-require 'fds/unordered_set'
 
 class UnorderedSetTest < Minitest::Test
   # Let's compare with the default Set class.
@@ -20,6 +19,13 @@ class UnorderedSetTest < Minitest::Test
   def test_insertion_of_multiple_different_integers
     @fset << 42 << 24
     @set << 42 << 24
+
+    assert_equal @fset.to_a, @set.to_a
+  end
+
+  def test_insertion_of_multiple_identical_and_different_integers
+    @fset << 42 << 24 << 42
+    @set << 42 << 24 << 42
 
     assert_equal @fset.to_a, @set.to_a
   end
