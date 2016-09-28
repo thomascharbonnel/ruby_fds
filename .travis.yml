@@ -1,0 +1,7 @@
+language: ruby
+rvm:
+ - 2.3.0
+script: bundle exec rake test
+addons:
+  code_climate:
+    repo_token: 52bd4ada383ac6d8c32c35f0a5bbd009a5bb81e864f5cfc17d1d411115f559ee
