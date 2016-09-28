@@ -29,4 +29,16 @@ class UnorderedSetTest < Minitest::Test
 
     assert_equal @fset.to_a, @set.to_a
   end
+
+  def test_deletion_of_all_items_should_give_empty_set
+    @fset << 1 << 2 << 3
+    @set << 1 << 2 << 3
+
+    @fset.delete(1).delete(2).delete(3)
+    @set.delete(1).delete(2).delete(3)
+
+    assert_equal(@fset.size, @set.size)
+    assert_equal(@fset.first, nil)
+    assert_equal(@fset.last, nil)
+  end
 end
