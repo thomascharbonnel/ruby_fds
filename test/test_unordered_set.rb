@@ -54,7 +54,7 @@ class UnorderedSetTest < Minitest::Test
     fset = @fset | fset1
     set = @set | set1
 
-    assert_equal(fset.to_a, set.to_a)
+    assert_equal(fset.to_a.to_set, set)
   end
 
   def test_intersection_of_two_sets
@@ -69,6 +69,6 @@ class UnorderedSetTest < Minitest::Test
     fset = @fset & fset1
     set = @set & set1
 
-    assert_equal(fset.to_a, set.to_a)
+    assert_equal(fset.to_a.to_set, set)
   end
 end
