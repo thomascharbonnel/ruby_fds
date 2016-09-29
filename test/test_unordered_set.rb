@@ -41,4 +41,34 @@ class UnorderedSetTest < Minitest::Test
     assert_equal(@fset.first, nil)
     assert_equal(@fset.last, nil)
   end
+
+  def test_union_of_two_sets
+    fset1 = FDS::UnorderedSet.new
+    set1 = Set.new
+
+    @fset0 << 1 << 2 << 3
+    @set0 << 1 << 2 << 3
+    fset1 << 3 << 4 << 5
+    set1 << 3 << 4 << 5
+
+    fset = @fset0 | fset1
+    set = @set0 | set1
+
+    assert_equal(fset.to_a, set.to_a)
+  end
+
+  def test_intersection_of_two_sets
+    fset1 = FDS::UnorderedSet.new
+    set1 = Set.new
+
+    @fset0 << 1 << 2 << 3
+    @set0 << 1 << 2 << 3
+    fset1 << 3 << 4 << 5
+    set1 << 3 << 4 << 5
+
+    fset = @fset0 & fset1
+    set = @set0 & set1
+
+    assert_equal(fset.to_a, set.to_a)
+  end
 end
