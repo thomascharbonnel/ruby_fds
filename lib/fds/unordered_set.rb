@@ -29,6 +29,25 @@ class FDS::UnorderedSet
     @data.each { |k, v| yield k }
   end
 
+  def include?(e)
+    find_index(e) != nil
+  end
+
+  # Could probably use some metaprogramming
+  def delete_if
+    @data.each do |k, v|
+      @data.delete(k) if yield(k)
+    end
+    self
+  end
+
+  def keep_if
+    @data.each do |k, v|
+      @data.delete(k) unless yield(k)
+    end
+    self
+  end
+
   def |(other)
     if self.size > other.size
       result = self.dup
@@ -45,6 +64,22 @@ class FDS::UnorderedSet
     result
   end
 
+  def &(other)
+    if self.size < other.size
+      result = self.dup
+      bigger_set = other
+    else
+      result = other.dup
+      bigger_set = self
+    end
+
+    result.keep_if do |e|
+      bigger_set.include?(e)
+    end
+
+    result
+  end
+
   [:to_s, :first, :last, :to_a].each do |function|
     class_eval(<<-EOF, __FILE__, __LINE__ + 1)
       def #{function}
@@ -55,4 +90,5 @@ class FDS::UnorderedSet
 
   alias_method :<<, :add
   alias_method :union, :|
+  alias_method :intersection, :&
 end
