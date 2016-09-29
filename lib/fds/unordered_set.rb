@@ -16,7 +16,7 @@ class FDS::UnorderedSet
     @data[e] if @data.has_key?(e)
   end
 
-  def remove(e)
+  def delete(e)
     @data.delete(e)
     self
   end
@@ -34,8 +34,4 @@ class FDS::UnorderedSet
   end
 
   alias_method :<<, :add
-  alias_method :+, :add # Should probably try to copy original Set behaviour
-  alias_method :rm, :remove
-  alias_method :del, :remove
-  alias_method :delete, :remove
 end
