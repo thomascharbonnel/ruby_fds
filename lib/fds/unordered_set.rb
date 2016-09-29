@@ -25,6 +25,26 @@ class FDS::UnorderedSet
     @data.size
   end
 
+  def each
+    @data.each { |k, v| yield k }
+  end
+
+  def |(other)
+    if self.size > other.size
+      result = self.dup
+      smaller_set = other
+    else
+      result = other.dup
+      smaller_set = self
+    end
+
+    smaller_set.each do |e|
+      result << e
+    end
+
+    result
+  end
+
   [:to_s, :first, :last, :to_a].each do |function|
     class_eval(<<-EOF, __FILE__, __LINE__ + 1)
       def #{function}
@@ -34,4 +54,5 @@ class FDS::UnorderedSet
   end
 
   alias_method :<<, :add
+  alias_method :union, :|
 end
