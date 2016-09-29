@@ -46,13 +46,13 @@ class UnorderedSetTest < Minitest::Test
     fset1 = FDS::UnorderedSet.new
     set1 = Set.new
 
-    @fset0 << 1 << 2 << 3
-    @set0 << 1 << 2 << 3
+    @fset << 1 << 2 << 3
+    @set << 1 << 2 << 3
     fset1 << 3 << 4 << 5
     set1 << 3 << 4 << 5
 
-    fset = @fset0 | fset1
-    set = @set0 | set1
+    fset = @fset | fset1
+    set = @set | set1
 
     assert_equal(fset.to_a, set.to_a)
   end
@@ -61,13 +61,13 @@ class UnorderedSetTest < Minitest::Test
     fset1 = FDS::UnorderedSet.new
     set1 = Set.new
 
-    @fset0 << 1 << 2 << 3
-    @set0 << 1 << 2 << 3
+    @fset << 1 << 2 << 3
+    @set << 1 << 2 << 3
     fset1 << 3 << 4 << 5
     set1 << 3 << 4 << 5
 
-    fset = @fset0 & fset1
-    set = @set0 & set1
+    fset = @fset & fset1
+    set = @set & set1
 
     assert_equal(fset.to_a, set.to_a)
   end
