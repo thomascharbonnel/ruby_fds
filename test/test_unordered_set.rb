@@ -71,4 +71,10 @@ class UnorderedSetTest < Minitest::Test
 
     assert_equal(fset.to_a.to_set, set)
   end
+
+  def test_export_to_string
+    @fset << 1 << 2 << 3
+
+    assert_equal(@fset.to_s, "[1, 2, 3]")
+  end
 end
