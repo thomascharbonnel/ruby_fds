@@ -13,6 +13,8 @@ class FDS::UnorderedSet
   end
 
   def find_index(e)
+    # @data.has_key? is needed otherwise @data will create a new element,
+    # see @data definition in #initialize.
     @data[e] if @data.has_key?(e)
   end
 
@@ -26,25 +28,20 @@ class FDS::UnorderedSet
   end
 
   def each
-    @data.each { |k, v| yield k }
+    @data.each_key(&proc)
   end
 
   def include?(e)
     find_index(e) != nil
   end
 
-  # Could probably use some metaprogramming
   def delete_if
-    @data.each do |k, v|
-      @data.delete(k) if yield(k)
-    end
+    @data.delete_if { |k, _| yield k }
     self
   end
 
   def keep_if
-    @data.each do |k, v|
-      @data.delete(k) unless yield(k)
-    end
+    @data.keep_if { |k, _| yield k }
     self
   end
 
@@ -80,6 +77,28 @@ class FDS::UnorderedSet
     result
   end
 
+  def first
+    @data.each_key { |k| return k }
+    nil
+  end
+
+  def last
+    # All keys are read through, but no intermediate array is created as
+    # whereas "keys.last" accumulates all keys for nothing.
+    # We can't use @data.each_key.last, because there's no Enumerable#last. :/
+    @data.reverse_each { |k, _| return k }
+    nil
+  end
+
+  def to_a
+    @data.keys
+  end
+
+  def to_s
+    to_a.to_s
+  end
+
+=begin
   [:to_s, :first, :last, :to_a].each do |function|
     class_eval(<<-EOF, __FILE__, __LINE__ + 1)
       def #{function}
@@ -87,6 +106,7 @@ class FDS::UnorderedSet
       end
     EOF
   end
+=end
 
   alias_method :<<, :add
   alias_method :union, :|
